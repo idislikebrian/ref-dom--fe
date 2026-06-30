@@ -1,0 +1,62 @@
+:global(.page:has(.home-route) > header) {
+  display: none;
+}
+
+.home {
+  --font-scale: 0.88;
+
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  background: var(--color-accent);
+  text-align: center;
+}
+
+.frame {
+  display: flex;
+  width: min(100%, 41.5rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--page-padding) * 0.22);
+  transform: translateY(calc(var(--page-padding) * -0.35));
+}
+
+.title,
+.caption,
+.credit {
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-body));
+  line-height: var(--leading-normal);
+  color: var(--swatch-1);
+  margin: 0;
+}
+
+.imageFrame {
+  display: block;
+  width: min(100%, 34.5rem);
+  border: 0.2rem solid var(--swatch-1);
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.credit {
+  margin-top: calc(var(--page-padding) * 0.15);
+}
+
+@media (max-width: 768px) {
+  .frame {
+    width: 100%;
+    transform: none;
+  }
+}

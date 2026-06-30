@@ -1,0 +1,88 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  margin-top: calc(var(--page-padding) * 0.3);
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--swatch-1);
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-h2));
+  line-height: var(--leading-tight);
+}
+
+.trigger:hover {
+  opacity: var(--active-opacity);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--swatch-1);
+  outline-offset: 2px;
+}
+
+.popover {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  max-width: 50%;
+  min-height:fit-content;
+  padding: calc(var(--page-padding) * 0.65);
+  transform: translate(-50%, -50%);
+  background: rgba(var(--color-ink), 1);
+  color: var(--color-bg-alt);
+  text-align: left;
+}
+
+.primaryLinks,
+.secondaryLinks {
+  display: flex;
+  flex-direction: column;
+  text-transform: lowercase;
+}
+
+.primaryLinks {
+  gap: 0;
+}
+
+.secondaryLinks {
+  gap: 0;
+  margin-top: calc(var(--page-padding) * 0.55);
+}
+
+.primaryLinks a,
+.secondaryLinks a {
+  color: var(--color-bg-alt);
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-h2));
+  line-height: var(--leading-normal);
+}
+
+.primaryLinks a:hover,
+.secondaryLinks a:hover {
+  opacity: var(--active-opacity);
+  text-decoration: none;
+}
+
+.primaryLinks a:focus-visible,
+.secondaryLinks a:focus-visible {
+  outline: 2px solid var(--color-bg-alt);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .popover {
+    width: min(17rem, calc(100vw - (var(--page-padding) * 2)));
+    padding: calc(var(--page-padding) * 1.25);
+  }
+}

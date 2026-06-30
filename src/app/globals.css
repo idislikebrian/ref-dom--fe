@@ -1,0 +1,258 @@
+/* ============================================
+   GLOBALS — design tokens + base styles
+   Modeled on: refdom reference site
+   - serif body/headlines (Times) vs grotesque
+     sans for UI/labels (swap in licensed fonts
+     below once purchased)
+   - near-monochrome palette via opacity swatches
+   - tight line-height, flat letter-spacing,
+     generous page padding, pill-shaped controls
+   ============================================ */
+
+@font-face {
+  font-family: "Display Grotesk";
+  src: url("/fonts/your-licensed-sans-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UI Mono";
+  src: url("/fonts/your-licensed-mono-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  /* ---- color: near-monochrome, opacity-layered ---- */
+  --color-bg: #fafafa;
+  --color-bg-alt: #ffffff;
+  --color-ink: 0, 0, 0; /* rgb channels, composed with alpha below */
+  --swatch-1: rgba(var(--color-ink), 0.85); /* primary text */
+  --swatch-2: rgba(var(--color-ink), 0.75); /* secondary text */
+  --swatch-3: rgba(var(--color-ink), 0.6);  /* tertiary / muted */
+  --swatch-4: rgba(var(--color-ink), 0.4);  /* disabled / hints */
+  --swatch-5: rgba(var(--color-ink), 0.25); /* dividers / faint */
+  --color-border: rgba(var(--color-ink), 0.2);
+  --color-border-soft: rgba(var(--color-ink), 0.1);
+
+  /* a single accent reserved for sparing use,
+     e.g. one callout page or a status tag —
+     not a site-wide color */
+  --color-accent: #4dff00;
+
+  /* ---- type ---- */
+  --font-serif: "Times New Roman", Times, Georgia, serif;
+  --font-sans: "Display Grotesk", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "UI Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --font-scale: 1; /* global multiplier — bump for accessibility or section overrides */
+  --fs-h1: 2.5rem;
+  --fs-h2: 1.1rem;
+  --fs-h3: 0.8rem;
+  --fs-h4: 1.2rem;
+  --fs-h5: 1.1rem;
+  --fs-body: 1rem;
+  --fs-caption: 0.7rem;
+  --fs-caption-mobile: 0.5rem;
+
+  --leading-tight: 1;
+  --leading-snug: 1.1;
+  --leading-normal: 1.2;
+  --tracking-flat: 0;
+
+  /* ---- layout ---- */
+  --page-padding: 3rem;
+  --page-padding-mobile: 1.25rem;
+  --radius-pill: 10em;
+  --radius-soft: 0.5rem;
+  --max-content: 100%;
+
+  /* ---- motion ---- */
+  --ease-standard: ease-in-out;
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --active-opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-scale: 1.25;
+    --page-padding: var(--page-padding-mobile);
+    --fs-caption: var(--fs-caption-mobile);
+  }
+}
+
+/* ---- reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--swatch-1);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+ol {
+  margin: 0;
+  padding: 0 0 0 2.5em;
+  list-style-type: decimal-leading-zero;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+ul.lineated {
+  list-style-type: none;
+  margin: 0 0 0 3em;
+  padding: 0;
+  text-indent: -3em;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+hr {
+  background: var(--swatch-3);
+  border: 0;
+  height: 1px;
+  margin: 0.5rem 0;
+}
+
+/* ---- typography ---- */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: var(--tracking-flat);
+  color: var(--swatch-1);
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-h1));
+  line-height: var(--leading-tight);
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-h2));
+  line-height: var(--leading-normal);
+}
+
+/* labels / UI headings break from the serif into the grotesque sans */
+h3,
+.eyebrow {
+  --text-style: "Header 3";
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-scale) * var(--fs-h3));
+  line-height: var(--leading-normal);
+}
+
+h4 {
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-scale) * var(--fs-h4));
+  line-height: var(--leading-normal);
+}
+
+h5 {
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-scale) * var(--fs-h5));
+  line-height: var(--leading-normal);
+}
+
+p,
+.bodycopy {
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-body));
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-flat);
+  color: var(--swatch-1);
+  margin: 0;
+}
+
+.caption {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  line-height: var(--leading-normal);
+  color: var(--swatch-1);
+}
+
+/* ---- links ---- */
+a {
+  color: var(--swatch-1);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  opacity: var(--active-opacity);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--swatch-1);
+  outline-offset: 2px;
+}
+
+/* ---- layout primitives ---- */
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100dvh;
+}
+
+.page-content {
+  padding: var(--page-padding);
+  text-align: left;
+}
+
+/* ---- buttons / pill controls ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-scale) * var(--fs-body));
+  line-height: normal;
+  padding: 0.5em 1em;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--color-ink), 0.15);
+  color: var(--swatch-2);
+  cursor: pointer;
+  border: none;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.btn:active {
+  opacity: var(--active-opacity);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+}

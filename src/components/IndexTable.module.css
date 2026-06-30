@@ -1,0 +1,223 @@
+/* ============================================
+   IndexTable.module.css
+   Searchable directory table for the Dominican
+   creative/connector index. Pairs with globals.css
+   tokens — no hardcoded colors/sizes here.
+   ============================================ */
+
+.wrap {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ---- controls: search + filters ---- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.searchInput {
+  flex: 1 1 16rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-body));
+  padding: 0.6em 1.1em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  color: var(--swatch-1);
+}
+
+.searchInput::placeholder {
+  color: var(--swatch-4);
+}
+
+.searchInput:focus-visible {
+  outline: 2px solid var(--swatch-1);
+  outline-offset: 2px;
+}
+
+.filterChip {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-h3));
+  padding: 0.5em 1em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--swatch-2);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filterChip[data-active="true"] {
+  background: var(--swatch-1);
+  color: var(--color-bg-alt);
+  border-color: var(--swatch-1);
+}
+
+.filterChip:active {
+  opacity: var(--active-opacity);
+}
+
+.resultCount {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  color: var(--swatch-3);
+  margin-bottom: 1rem;
+}
+
+/* ---- table (desktop) ---- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  text-align: left;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-h3));
+  font-weight: 400;
+  color: var(--swatch-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.75em 1em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+  border-bottom: 1px solid var(--color-border-soft);
+  background-color: transparent;
+  transition: background-color 500ms var(--ease-standard);
+}
+
+.row td {
+  padding: 1em;
+  vertical-align: top;
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-body));
+  color: var(--swatch-1);
+  background-color: transparent;
+  transition: background-color 750ms var(--ease-standard);
+}
+
+.row:hover,
+.row:focus-within,
+.row:hover td,
+.row:focus-within td {
+  background-color: var(--color-accent);
+  transition-duration: var(--duration-fast);
+}
+
+.nameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: calc(var(--font-scale) * var(--fs-h4));
+}
+
+.role {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  color: var(--swatch-3);
+}
+
+.location {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  color: var(--swatch-3);
+}
+
+/* tags/skills as small pill chips, not links */
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  padding: 0.3em 0.75em;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--color-ink), 0.06);
+  color: var(--swatch-2);
+  white-space: nowrap;
+}
+
+.connectBtn {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  padding: 0.45em 1.1em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--swatch-1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.connectBtn:hover {
+  background: var(--swatch-1);
+  color: var(--color-bg-alt);
+  border-color: var(--swatch-1);
+}
+
+.connectBtn:active {
+  opacity: var(--active-opacity);
+}
+
+.emptyState {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-family: var(--font-serif);
+  color: var(--swatch-3);
+}
+
+/* ---- mobile: collapse rows into cards ---- */
+@media (max-width: 768px) {
+  .tableHead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .row,
+  .row td {
+    display: block;
+    width: 100%;
+  }
+
+  .row {
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-soft);
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+  }
+
+  .row td {
+    padding: 0.25em 0;
+    border: none;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

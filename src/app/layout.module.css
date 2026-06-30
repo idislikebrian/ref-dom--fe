@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--page-padding) * 0.5);
+  padding: var(--page-padding) var(--page-padding) 0;
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-scale) * var(--fs-h3));
+  line-height: var(--leading-normal);
+  color: var(--swatch-2);
+}
+
+.brand {
+  color: var(--swatch-1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--page-padding) * 0.35);
+}
+
+.nav a {
+  color: var(--swatch-2);
+}
+
+@media (max-width: 768px) {
+  .header {
+    align-items: flex-start;
+  }
+}

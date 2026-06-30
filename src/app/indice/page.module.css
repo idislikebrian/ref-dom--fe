@@ -1,0 +1,31 @@
+.wrap {
+  width: 100%;
+  text-align: left;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.35fr);
+  gap: calc(var(--page-padding) * 0.5);
+  align-items: end;
+  margin-bottom: var(--page-padding);
+}
+
+.header p {
+  max-width: 42rem;
+  color: var(--swatch-2);
+}
+
+.note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: calc(var(--font-scale) * var(--fs-caption));
+  line-height: var(--leading-normal);
+  color: var(--swatch-3);
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+}
