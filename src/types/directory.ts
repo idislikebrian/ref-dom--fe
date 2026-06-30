@@ -7,9 +7,11 @@ export type DirectoryEntry = {
   region: string;
   bio: string;
   tags: string[];
-  connect: {
-    label: string;
-    href: string;
-    type: "email" | "social";
-  };
+  connect: DirectoryConnect | null;
+};
+
+export type DirectoryConnect = {
+  label: string;
+  href: string;
+  type: "email" | "social";
 };

@@ -104,10 +104,10 @@ export function IndexTable({ entries, tags, regions }: IndexTableProps) {
           <thead className={styles.tableHead}>
             <tr>
               <th scope="col">Name</th>
-              <th scope="col">Location</th>
-              <th scope="col">Bio</th>
-              <th scope="col">Tags</th>
-              <th scope="col">Connect</th>
+              <th scope="col">Zona</th>
+              <th scope="col">Lo Tuyo</th>
+              <th scope="col">Qué Haces</th>
+              <th scope="col">Conectar</th>
             </tr>
           </thead>
           <tbody>
@@ -135,15 +135,23 @@ export function IndexTable({ entries, tags, regions }: IndexTableProps) {
                   </div>
                 </td>
                 <td>
-                  <a
-                    aria-label={`Connect with ${entry.name} via ${entry.connect.label}`}
-                    className={styles.connectBtn}
-                    href={entry.connect.href}
-                    rel={entry.connect.type === "social" ? "noreferrer" : undefined}
-                    target={entry.connect.type === "social" ? "_blank" : undefined}
-                  >
-                    {entry.connect.label}
-                  </a>
+                  {entry.connect ? (
+                    <a
+                      aria-label={`Connect with ${entry.name} via ${entry.connect.label}`}
+                      className={styles.connectBtn}
+                      href={entry.connect.href}
+                      rel={
+                        entry.connect.type === "social"
+                          ? "noreferrer"
+                          : undefined
+                      }
+                      target={
+                        entry.connect.type === "social" ? "_blank" : undefined
+                      }
+                    >
+                      {entry.connect.label}
+                    </a>
+                  ) : null}
                 </td>
               </tr>
             ))}

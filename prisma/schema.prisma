@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Profile {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  role        String
+  bio         String?
+  city        String
+  country     String
+  region      String?
+  email       String?
+  website     String?
+  instagram   String?
+  linkedin    String?
+  disciplines String[]
+  featured    Boolean  @default(false)
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  description String?
+  location    String?
+  city        String?
+  country     String?
+  startDate   DateTime
+  endDate     DateTime?
+  isVirtual   Boolean   @default(false)
+  ticketUrl   String?
+  coverImage  String?
+  tags        String[]
+  published   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

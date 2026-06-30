@@ -1,13 +1,13 @@
 import { StandardPageShell } from "@/components/SiteChrome";
 import { IndexTable } from "@/components/IndexTable";
-import {
-  directoryEntries,
-  directoryRegions,
-  directoryTags
-} from "@/data/directoryEntries";
+import { getProfileDirectory } from "@/data/profiles";
 import styles from "./page.module.css";
 
-export default function IndicePage() {
+export const dynamic = "force-dynamic";
+
+export default async function IndicePage() {
+  const { profiles, tags, regions } = await getProfileDirectory();
+
   return (
     <StandardPageShell active="indice" width="wide">
       <div className={styles.wrap}>
@@ -22,9 +22,9 @@ export default function IndicePage() {
         </section>
 
         <IndexTable
-          entries={directoryEntries}
-          tags={directoryTags}
-          regions={directoryRegions}
+          entries={profiles}
+          tags={tags}
+          regions={regions}
         />
       </div>
     </StandardPageShell>
