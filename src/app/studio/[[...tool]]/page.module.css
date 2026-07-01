@@ -1,0 +1,9 @@
+.studio {
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.studio :global([data-ui="Root"]) {
+  height: 100%;
+}

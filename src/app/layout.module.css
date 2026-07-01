@@ -10,6 +10,18 @@
   color: var(--swatch-2);
 }
 
+:global(.page:has([data-studio-root]) > header) {
+  display: none;
+}
+
+:global(.page:has([data-studio-root])) {
+  min-height: 100dvh;
+}
+
+:global(.page:has([data-voice-modal]) > header) {
+  display: none;
+}
+
 .brand {
   color: var(--swatch-1);
 }

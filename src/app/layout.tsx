@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 import styles from "./layout.module.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           </header>
           {children}
         </div>
+        <SanityLive />
       </body>
     </html>
   );

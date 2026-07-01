@@ -11,16 +11,6 @@ export default async function IndicePage() {
   return (
     <StandardPageShell active="indice" width="wide">
       <div className={styles.wrap}>
-        <section className={styles.header}>
-          <div>
-            <h1>Índice</h1>
-            <p>
-              A searchable directory of Dominican creative professionals and
-              connectors worldwide.
-            </p>
-          </div>
-        </section>
-
         <IndexTable
           entries={profiles}
           tags={tags}

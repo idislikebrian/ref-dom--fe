@@ -1,14 +1,16 @@
 import { StandardPageShell } from "@/components/SiteChrome";
-import styles from "../scaffold.module.css";
+import { getVoices } from "./data";
+import { VoiceList } from "./VoiceList";
+import styles from "./page.module.css";
 
-export default function VocesPage() {
+export default async function VocesPage() {
+  const voices = await getVoices();
+
   return (
-    <StandardPageShell active="voces">
-      <section className={styles.page}>
-        <p>
-          <i>En proceso. In process.</i>
-        </p>
-      </section>
+    <StandardPageShell active="voces" width="wide">
+      <div className={styles.wrap}>
+        <VoiceList voices={voices} />
+      </div>
     </StandardPageShell>
   );
 }

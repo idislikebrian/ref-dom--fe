@@ -13,11 +13,17 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@prisma/client": "^6.19.3",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.31.1",
     "motion": "^12.42.2",
     "next": "latest",
+    "next-sanity": "^13.1.1",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "sanity": "^5.31.1",
+    "styled-components": "^6.4.3"
   },
   "devDependencies": {
     "@types/node": "latest",

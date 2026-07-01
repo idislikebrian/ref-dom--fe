@@ -1,14 +1,16 @@
 import { StandardPageShell } from "@/components/SiteChrome";
-import styles from "../scaffold.module.css";
+import { ArchiveList } from "./ArchiveList";
+import { getArchiveEntries } from "./data";
+import styles from "./page.module.css";
 
-export default function ArchivoPage() {
+export default async function ArchivoPage() {
+  const entries = await getArchiveEntries();
+
   return (
-    <StandardPageShell active="archivo">
-      <section className={styles.page}>
-        <p>
-          <i>En proceso. In process.</i>
-        </p>
-      </section>
+    <StandardPageShell active="archivo" width="wide">
+      <div className={styles.wrap}>
+        <ArchiveList entries={entries} />
+      </div>
     </StandardPageShell>
   );
 }
